@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Social Call</title>
+    <link rel="stylesheet" href="/static/css/register.css">
+
+</head>
+<body>
+    {% include 'nav.html' %}
+    <main>
+        {% if error %}
+        <script>
+            Toastify({
+                text: "{{error}}",
+                duration: 3000,
+                destination: "https://github.com/apvarun/toastify-js",
+                newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                    background: "red",
+                },
+                onClick: function(){} // Callback after click
+                }).showToast();
+        </script>
+        {% endif %}
+
+        {% if message %}
+        <script>
+            Toastify({
+                text: "{{message}}",
+                duration: 3000,
+                destination: "https://github.com/apvarun/toastify-js",
+                newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                    background: "green",
+                },
+                onClick: function(){} // Callback after click
+                }).showToast();
+        </script>
+        {% endif %}
+
+        <div class="main-container">
+            <h3>Register as Volunteer</h3>
+
+            <form method="post" action="/auth/register-volunteer">
+                <!-- Personal Information -->
+                <div class="input__container">
+                    <label for="full_name">Full Name</label>
+                    <input type="text" id="full_name" name="full_name" required>
+                </div>
+
+                <div class="input__container">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="input__container">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" required>
+                </div>
+
+                <!-- Address Information -->
+                <div class="input__container">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+
+                <div class="input__container">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+
+                <div class="input__container">
+                    <label for="state">State</label>
+                    <input type="text" id="state" name="state" required>
+                </div>
+
+                <div class="input__container">
+                    <label for="zip_code">ZIP Code</label>
+                    <input type="text" id="zip_code" name="zip_code" required>
+                </div>
+
+                <!-- Volunteer Preferences -->
+                <div class="input__container">
+                    <label for="availability">Availability</label>
+                    <select id="availability" name="availability" required>
+                        <option value="fullTime">Full Time</option>
+                        <option value="partTime">Part Time</option>
+                        <option value="weekends">Weekends Only</option>
+                    </select>
+                </div>
+                <div class="input__container">
+                    <label for="travel_pref">Travel Convenience</label>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div style="display: flex; align-items: center;">
+                            <input type="radio" id="travel_pref_yes" name="travel_pref" value="yes" required>
+                            <label for="travel_pref_yes">Yes</label>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <input type="radio" id="travel_pref_no" name="travel_pref" value="no" required>
+                            <label for="travel_pref_no">No</label>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" id="user_id" name="user_id" value="{{user.id}}">
+                <div class="input__container">
+                    <label for="interests">Interests/Skills</label>
+                    <textarea id="interests" name="interests" rows="4" required></textarea>
+                </div>
+                <button>Register</button>
+            </form>
+        </div>
+    </main>
+    <div style="height: 76px;"></div>
+</body>
+
+</html>

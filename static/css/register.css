@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html, body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    height: 100%;
+    background-color: #f0f9ff;
+
+}
+
+h1 {
+    font-weight: 600;
+}
+
+nav {
+    height: 75px;
+    border-bottom: 1px solid rgb(199, 199, 199);
+    display: flex;
+    align-items: center;
+    padding: 0px 12px;
+    background-color: white;
+    box-shadow: 0px 1px 3px rgba(29, 29, 29, 0.12), 0 0px 2px rgba(38, 38, 38, 0.24);
+}
+
+
+.social-call-sec {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.social-call-sec img {
+    width: 24px;
+    height: 24px;
+}
+
+.social-call-sec a{
+    text-decoration: none;
+    color: black; 
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+/* Form */
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 76px;
+    padding-bottom: 76px;
+}
+
+.main-container {
+    /* border: 1px solid black; */
+    background-color: white;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0px 1px 3px rgba(29, 29, 29, 0.12), 0 0px 2px rgba(38, 38, 38, 0.24);
+
+}
+
+.main-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.main-container h3 {
+    font-weight: 600;
+    font-size: 23px;
+    text-align: center;
+}
+
+.input__container {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+}
+
+.input__container label {
+    font-size: 13px;
+}
+
+.input__container input, .input__container select, .input__container textarea {
+    font-size: 13px;
+    border: 1px solid black;
+    border-radius: 4px;
+    outline: none;
+    font-family: inherit;
+    padding: 8px;
+}
+
+.main-container button {
+    background-color: #2563eb;
+    border: none;
+    outline: none;
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 12px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.main-container button:hover {
+    background-color: #3b82f6;
+}

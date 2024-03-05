@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Social Call</title>
+    <link rel="stylesheet" href="/static/css/register.css">
+</head>
+
+<body>
+
+    {% include 'nav.html' %}
+
+    {% if error %}
+        <script>
+            Toastify({
+                text: "{{error}}",
+                duration: 3000,
+                destination: "https://github.com/apvarun/toastify-js",
+                newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                    background: "red",
+                },
+                onClick: function(){} // Callback after click
+                }).showToast();
+        </script>
+    {% endif %}
+
+    <main>
+        <div class="main-container">
+            <h3>Welcome back!</h3>
+
+            <form method="post" action="/auth/login">
+                <div class="input__container">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input__container">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <a href="" style="font-size: 13px;text-align: end;text-decoration: none;color: blue;">Forget password?</a>
+                <button>Login</button>
+            </form>
+        </div>
+    </main>
+
+    <div style="height: 76px;">
+
+    </div>
+
+    {% if message == "1" %}
+    <script>
+        window.location.href="/volunteers"    
+    </script>
+    {% endif %}
+</body>
+
+</html>

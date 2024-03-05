@@ -1,0 +1,153 @@
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<link rel="stylesheet" href="/static/css/nav.css">
+
+<nav>
+    <span class="social-call-sec">
+        <img src="/static/images/logo.svg" alt="">
+        <a href="/">SOCIAL CALL</a>
+    </span>
+    <div style="display: flex;gap: 12px;">
+        <p>{% if userid %}{{userid}}{% endif %}</p>
+        <button id="menu-button">
+            <img src="/static/images/menu.svg" alt="meun-icon" width="24px" />
+        </button>
+
+    </div>
+</nav>
+
+<div class="navbar-overlay close">
+
+</div>
+
+<div class="menu--container close">
+    <span class="nav-links">
+        <a href="/">Home</a>
+        <a href="/volunteers">Volunteer Dashboard</a>
+        {% if userid %}
+        <a href="/my-profile">My Profile</a>
+        <a onclick="addAnnounce()" href="">Add Announcments</a>
+        <a href="/logout">Logout</a>
+        {% else %}
+        <a href="/register">Sign up</a>
+        <a href="/login">Login</a>
+        {% endif %}
+
+    </span>
+</div>
+
+<!-- <div class="announce close">
+    <div class="card-container">
+        <div class="card">
+            <div class="card__details">
+                <h3 class="card__title">-</h3>
+                <p class="card__content">--</p>
+                <div class="card__meta">
+                    <p class="card__createdat">--</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+<script>
+
+    function addAnnounce() {
+        let title = prompt("Title for announcement")
+        let content = prompt("Content for announcement")
+
+        createAnnouncement({ "title": title, "content": content });
+    }
+
+    async function createAnnouncement(announcement) {
+        const response = await fetch('/announcements', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(announcement),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Failed to create announcement: ${response.statusText}`);
+        } else {
+            Toastify({
+            text: "Announcement created",
+            duration: 3000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "green",
+            },
+            onClick: function () { } // Callback after click
+        }).showToast();
+        }
+
+        const result = await response.json();
+        console.log(result);
+    }
+
+    // Code for controlling menu button
+    
+    let menuContainer = document.querySelector('.menu--container');
+    let navbarOverlay = document.querySelector('.navbar-overlay');
+    navbarOverlay.addEventListener('click', () => {
+        menuContainer.classList.toggle('close');
+        navbarOverlay.classList.toggle('close');
+    })
+
+    document.getElementById('menu-button').addEventListener('click', () => {
+        menuContainer.classList.toggle('close');
+        navbarOverlay.classList.toggle('close');
+        // Turn off scroll when menu is open
+        if (!menuContainer.classList.contains('close')) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = 'auto'
+        }
+    })
+
+    
+    // document.getElementById('bell-button').addEventListener('click', () => {
+    //     let announce = document.querySelector('.announce');
+    //     announce.classList.toggle('close');
+    //     // Turn off scroll when menu is open
+    //     if (!announce.classList.contains('close')) {
+    //         document.body.style.overflow = 'hidden'
+    //         let announce = document.querySelector('.announce').querySelector('.card-container');
+    
+    // fetch('/announcements')
+    //             .then(response => response.json())
+    //             .then(announcements => {
+    //                 if (announcements.length){
+    //                     let cards = ``
+    //                 announcements.forEach(announcement => {
+    //                     cards += `<div class="card">
+    //         <div class="card__details">
+    //             <h3 class="card__title">${announcement.title}</h3>
+    //             <p class="card__content">${announcement.content}</p>
+    //             <div class="card__meta">
+    //                 <p class="card__createdat">${new Date(announcement.created_at).toDateString()}</p>
+    //             </div>
+    //         </div>
+    //     </div>`
+    //                 });
+
+    //                 announce.innerHTML = cards;
+    //                 }
+                    
+    //             }).catch(error => console.log(error))
+
+
+    //     } else {
+    //         document.body.style.overflow = 'auto'
+    //     }
+    // })
+
+</script>

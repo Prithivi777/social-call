@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/volunteers.css">
+    <title>Social Call</title>
+</head>
+
+<body>
+    {% include 'nav.html' %}
+    {% if message %}
+    <script>
+        Toastify({
+            text: "{{message}}",
+            duration: 3000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "green",
+            },
+            onClick: function(){} // Callback after click
+            }).showToast();
+    </script>
+{% endif %}
+    <div class="top--container">
+            <div class="volunteer-section">
+                <div class="filter-container">
+                    <select name="" id="city-filter">
+                        <option value="" selected>Select a City</option>
+                        {% for city in cities %}
+                            <option value="{{city}}">{{city}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="main--container">
+                    <div class="card--container">
+                        {% if users %}
+                        {% for user in users %}
+                        <div class="volunteer-card" onclick="toggleDetails('{{user.id}}')">
+                            <div class="card--heading">
+                                <h3>{{user.full_name}}</h3>
+                                <img src="/static/images/arrow_down.svg" alt="">
+                            </div>
+                            <span>
+                                <div class="volunteer-status green"></div>
+                                <p>Availability: {{user.availability}}</p>
+                            </span>
+                            <div id="{{user.id}}" class="volunteer-details">
+                                {% if user.activities %}
+                                    <p>Activities: {{user.activities}}</p>
+                                    {% else %}
+                                    <p>Interests/Skills: {{user.interests}}</p>
+                                {% endif %}
+            
+                                <p>Email: {{user.user.email}}</p>
+                                <p>Phone: {{user.phone}}</p>
+                                <p>Location: {{user.city}} {{user.state}}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <h1>No Volunteers Found!</h1>
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="announcement-section">
+            <h4 style="margin: 0px;">Announcements 📢</h4>
+            <marquee onmouseover="this.stop();" onmouseout="this.start();" direction="up" behavior="scroll" scrollamount="1" loop height="100%">
+                {% for announcement in announcements %}
+                <p class="announce-main-container">
+                    <img src="/static/images/arrow-right.svg" alt="" width="22px">
+                    <content>{{announcement.content}}</content>
+                </p>
+                {% endfor %}
+            </marquee>
+        </div>
+    </div>
+    <script>
+        function toggleDetails(id) {
+            var details = document.getElementById(id);
+            if (details.style.display === "none") {
+                details.style.display = "block";
+            } else {
+                details.style.display = "none";
+            }
+        }
+
+        const filterContainer = document.getElementById('city-filter');
+        
+        filterContainer.querySelectorAll('option').forEach((v) => {
+            const url = new URL(window.location.href);
+            const searchParams = new URLSearchParams(url.search)
+            if (searchParams.get('city') == v.value)  {
+                v.selected = true;
+            }
+        })
+
+        filterContainer.addEventListener('change', (e) => {
+            const url = new URL(window.location.href);
+            const searchParams = new URLSearchParams(url.search)
+            searchParams.set('city', e.target.value);
+
+            url.search = searchParams.toString();
+            window.location.href=url.toString();
+        })
+    </script>
+</body>
+
+</html>

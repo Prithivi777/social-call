@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html, body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    height: 100%;
+    background-color: #f0f9ff;
+
+}
+
+h1 {
+    font-weight: 600;
+}
+
+nav {
+    height: 75px;
+    border-bottom: 1px solid rgb(199, 199, 199);
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 0px 12px;
+    box-shadow: 0px 1px 3px rgba(29, 29, 29, 0.12), 0 0px 2px rgba(38, 38, 38, 0.24);
+}
+
+
+.social-call-sec {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.social-call-sec img {
+    width: 24px;
+    height: 24px;
+}
+
+.social-call-sec a{
+    text-decoration: none;
+    color: black; 
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+/* Card */
+
+.main--container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card--container  {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.volunteer-card {
+    background-color: white;
+    flex-grow: 0;
+    box-shadow: 0px 1px 3px rgba(29, 29, 29, 0.12), 0 0px 2px rgba(38, 38, 38, 0.24);
+    border-radius: 5px;
+    margin: 10px;
+    padding: 15px;
+    width: 300px;
+    cursor: pointer;
+    transition: all 0.3 ease-in-out;
+}
+
+.volunteer-card:hover {
+    background-color: #f9f9f9;
+}
+
+.volunteer-details {
+    display: none;
+    margin-top: 10px;
+}
+
+.volunteer-card h3 {
+    font-weight: 600;
+}
+
+.volunteer-card p {
+    margin: 0 !important;
+    font-size: 13px;
+}
+
+
+.volunteer-card span {
+    display: flex;
+    align-items: center; 
+    gap: 8px;
+}
+
+.volunteer-status {
+    display: inline;
+    background-color: black;
+    width: 7px;
+    height: 8px;
+    border-radius: 99999px;
+}
+
+.volunteer-status.green {
+    background-color: #4ade80;
+}
+
+.volunteer-status.red {
+    background-color: #ef4444;
+}
+
+.card--heading {
+    display: flex; 
+    justify-content: space-between;
+}
+
+.card--heading img {
+    width: 24px;
+}
+
+.filter-container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 65px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: end;
+}
+
+#city-filter {
+    padding: 8px 12px;
+    outline: none;
+    border: none;
+    background-color: #0284c7;
+    color: white;
+    border-radius: 6px;
+}
+
+#city-filter option{
+    background-color: white;
+    color: black;
+}
+
+.top--container {
+    margin: 0px 20px;
+    display: flex;
+    gap: 32px;
+}
+
+.volunteer-section {
+    width: 70%;
+}
+
+.announcement-section {
+    position: fixed;
+    box-shadow: 0px 1px 3px rgba(29, 29, 29, 0.12), 0 0px 2px rgba(38, 38, 38, 0.24);
+    top:65px;
+    right: 15px;
+    border-radius: 12px;
+    margin-top: 65px;
+    padding: 15px;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow: hidden;
+    box-sizing: border-box;
+    height: 150px;
+}
+
+.announce-main-container {
+    display: flex;
+    align-items: start;
+    font-size: 13px;
+    gap: 12px;
+}
+
+.announce-main-container p {
+    margin: 0;
+}
+
+

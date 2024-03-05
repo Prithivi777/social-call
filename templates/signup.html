@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Social Call</title>
+    <link rel="stylesheet" href="/static/css/register.css">
+    
+</head>
+
+<body>
+    {% include 'nav.html' %}
+
+    {% if error %}
+    <script>
+        Toastify({
+            text: "{{error}}",
+            duration: 3000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "red",
+            },
+            onClick: function () { } // Callback after click
+        }).showToast();
+    </script>
+    {% endif %}
+    <style>
+        .main-container p {
+            font-size: 13px;
+            text-align: right;
+        }
+    </style>
+
+    <main>
+        <div class="main-container">
+            <h3>Set New ID & Password</h3>
+
+            <form method="post" action="/auth/register" id="registration-form">
+                <div class="input__container">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="input__container">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="input__container">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password">
+                </div>
+                <p>Already a volunteer? <a href="/login">Login</a></p>
+                <button>Sign Up</button>
+            </form>
+        </div>
+    </main>
+
+    <div style="height: 76px;">
+    </div>
+
+
+    <script>
+        const form = document.getElementById('registration-form');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const confirmPassword = document.getElementById('confirm-password');
+
+            // Validate email
+            if (!email.validity.valid) {
+                Toastify({
+                    text: "Please enter a valid email address",
+                    duration: 3000,
+                    destination: "https://github.com/apvarun/toastify-js",
+                    newWindow: true,
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    style: {
+                        background: "red",
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+
+                return;
+            }
+
+            // Validate password
+            if (!password.validity.valid) {
+                Toastify({
+                    text: "Please enter a valid password",
+                    duration: 3000,
+                    destination: "https://github.com/apvarun/toastify-js",
+                    newWindow: true,
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    style: {
+                        background: "red",
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+                return;
+            }
+
+            // Validate password confirmation
+            if (password.value !== confirmPassword.value) {
+                Toastify({
+                    text: "Passwords do not match",
+                    duration: 3000,
+                    destination: "https://github.com/apvarun/toastify-js",
+                    newWindow: true,
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    style: {
+                        background: "red",
+                    },
+                    onClick: function () { } // Callback after click
+                }).showToast();
+                return;
+            }
+
+            // If all checks pass, submit the form
+            form.submit();
+        });
+    </script>
+</body>
+
+</html>

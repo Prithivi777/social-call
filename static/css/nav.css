@@ -1,0 +1,146 @@
+nav {
+    position: relative;
+    z-index: 20;
+    height: 65px;
+    border-bottom: 1px solid rgb(199, 199, 199);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 32px;
+    background-color: white;
+    box-shadow: 0px 1px 3px rgba(29, 29, 29, 0.12), 0 0px 2px rgba(38, 38, 38, 0.24);
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.social-call-sec {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.social-call-sec img {
+    width: 24px;
+    height: 24px;
+}
+
+.social-call-sec a {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 32px;
+    gap: 16px;
+}
+
+nav button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.menu--container,
+.announce {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    overflow: auto;
+    z-index: 30;
+    height: 100vh;
+    background-color: #1e40af;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+.menu--container a {
+    color: white;
+    text-decoration: none;
+}
+
+.menu--container.close,
+.announce.close {
+    transform: translate(-100%);
+}
+
+.card-container {
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-container:last-child {
+    margin-bottom: 20px;
+}
+
+.card {
+    border: 1px solid white;
+    width: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 10px 16px 0px 16px;
+}
+
+.card__image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card__details {
+    padding: 16px;
+}
+
+.card__title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0px;
+}
+
+.card__content {
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0px;
+}
+
+.card__meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.card__createdat {
+    margin-bottom: 0;
+}
+
+.navbar-overlay {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 20;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.36);
+}
+
+.navbar-overlay.close {
+    display: none;
+}
